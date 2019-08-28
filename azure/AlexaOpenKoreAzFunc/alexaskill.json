@@ -1,0 +1,150 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "botijo dios",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "Cancelar"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "Ayuda",
+            "Dame instrucciones"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "Para",
+            "Salir"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "EmotionWhistleIntent",
+          "slots": [],
+          "samples": [
+            "Silba",
+            "Silbad",
+            "Cantad"
+          ]
+        },
+        {
+          "name": "EmotionHearthIntent",
+          "slots": [],
+          "samples": [
+            "Vamos a comer pizza",
+            "Qué pensáis del evento"
+          ]
+        },
+        {
+          "name": "EmotionIdeaIntent",
+          "slots": [],
+          "samples": [
+            "Pensad en algo útil",
+            "Piensa en algo útil",
+            "Qué ideas se os ocurren"
+          ]
+        },
+        {
+          "name": "SitIntent",
+          "slots": [],
+          "samples": [
+            "Sentaos",
+            "Siéntate"
+          ]
+        },
+        {
+          "name": "StandupIntent",
+          "slots": [],
+          "samples": [
+            "Levantaos",
+            "Levanta"
+          ]
+        },
+        {
+          "name": "TalkIntent",
+          "slots": [
+            {
+              "name": "Message",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "Decid {Message}",
+            "Dí {Message}"
+          ]
+        },
+        {
+          "name": "AttackIntent",
+          "slots": [],
+          "samples": [
+            "Atacad",
+            "Ataca"
+          ]
+        },
+        {
+          "name": "NoAttackIntent",
+          "slots": [],
+          "samples": [
+            "Dejad de atacar",
+            "No ataquéis",
+            "Deja de atacar",
+            "No ataques"
+          ]
+        },
+        {
+          "name": "CurrentNumberIntent",
+          "slots": [],
+          "samples": [
+            "Dime cuantos bots hay conectados",
+            "Dime cuantos socios hay conectados",
+            "Dime cuantos amigos hay conectados"
+          ]
+        },
+        {
+          "name": "ScaleIntent",
+          "slots": [
+            {
+              "name": "number",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "Cambia el número de socios a {number}",
+            "Llama a {number} socios",
+            "Llama a {number} amigos",
+            "Invoca a {number} bots",
+            "Reduce el número de socios a {number}"
+          ]
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "ReunitedIntent",
+          "slots": [],
+          "samples": [
+            "Reune a los socios",
+            "Junta todos los amigos",
+            "Reune a los bots",
+            "Reuníos"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

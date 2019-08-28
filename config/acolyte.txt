@@ -1,0 +1,180 @@
+######## Block options ########
+# You can copy & paste any block multiple times. So if you want to
+# configure two attack skills, just duplicate the attackSkillSlot block.
+
+useSelf_skill Heal {
+   lvl 10
+   hp < 50%
+   sp > 10%
+}
+
+useSelf_skill Increase AGI {
+   lvl 10
+   whenStatusInactive Increase AGI
+   sp > 10%
+   timeout 5
+}
+
+useSelf_skill Blessing {
+   lvl 10
+   whenStatusInactive Blessing
+   sp > 10%
+   timeout 5
+}
+
+useSelf_skill Ruwach {
+   lvl 1
+   whenStatusInactive Ruwach
+   sp > 10%
+   timeout 120
+}
+
+useSelf_skill Angelus {
+   lvl 10
+   whenStatusInactive Angelus
+   sp > 10%
+   timeout 120
+}
+
+useSelf_skill Cure {
+   lvl 1
+   whenStatusActive Cursed, Blinded, Chaos, Silenced
+   sp > 10%
+   timeout 5
+}
+
+attackSkillSlot Holy Light {
+   lvl 1
+   sp > 10%
+   monsters 
+}
+
+attackSkillSlot Decrease AGI {
+   lvl 10
+   sp > 10%
+   monsters 
+   maxAttempts 5
+   maxUses 1
+}
+
+partySkill Heal {
+   lvl 5
+   target_hp < 70%
+   sp > 10 %
+}
+
+partySkill Blessing {
+   lvl 10
+   sp > 64
+   notInTown 1
+   timeout 3
+   target_whenStatusInactive Blessing
+   target_timeout 240
+}
+
+partySkill Increase AGI {
+   lvl 10
+   sp > 45
+   notInTown 0
+   timeout 3
+   target_whenStatusInactive Increase AGI
+   target_timeout 240
+}
+
+partySkill Angelus {
+   lvl 10
+   sp > 45
+   notInTown 1
+   timeout 3
+   target_whenStatusInactive Angelus
+   target_timeout 240
+        isSelfSkill 1
+}
+
+partySkill Cure {
+   lvl 1
+   target_whenStatusActive Cursed, Blinded, Chaos, Silenced
+   sp > 10%
+   timeout 5
+}
+
+autoSwitch_default_rightHand
+autoSwitch_default_leftHand
+autoSwitch_default_arrow
+
+# NOTE: In the case of two handed weapons, or no Shield,
+#       duplicate the weapon name for 'rightHand'
+# To attack with bare hands, specify "[NONE]" (without the quotes) for rightHand
+
+autoSwitch {
+	rightHand
+	leftHand
+	arrow
+	distance
+	useWeapon
+}
+
+equipAuto {
+	topHead
+	midHead
+	lowHead
+	leftHand
+	rightHand
+	leftAccessory
+	rightAccessory
+	robe
+	armor
+	shoes
+	arrow
+	monsters
+	notMonsters
+	monstersCount
+	weight 0
+	whileSitting 0
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout 0
+	disabled 0
+	inInventory
+	manualAI 0
+}
+
+useSelf_item {
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	monsters
+	notMonsters
+	monstersCount
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout
+	disabled 0
+	inInventory
+	manualAI 0
+}

@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rathena-openkore-pwd
+  labels:
+    app: rathena
+type: Opaque
+data:
+  user-pwd: cDRzc0B3MHJk # p4ss@w0rd in base64
+  mysql-pwd: cDRzc0B3MHJk # p4ss@w0rd in base64
+  storage-key: YOUR_AZURE_STORAGE_ACCOUNT_KEY
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rathena-openkore-cognitive
+  labels:
+    app: rathena
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: rathena
+      component: openkore-cognitive
+      version: v1.0
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rathena
+        component: openkore-cognitive
+        version: v1.0
+    spec:
+      containers:
+      - image: cmilanf/rathena:openkore-cognitive
+        imagePullPolicy: Always
+        name: rathena-openkore-cognitive
+        resources:
+          requests:
+            memory: "384Mi"
+            cpu: "150m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
+        env:
+        - name: OK_PWD
+          valueFrom:
+            secretKeyRef:
+              name: rathena-openkore-pwd
+              key: user-pwd
+        - name: MYSQL_PWD
+          valueFrom:
+            secretKeyRef:
+              name: rathena-openkore-pwd
+              key: mysql-pwd
+        - name: STORAGE_ACCOUNT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: rathena-openkore-pwd
+              key: storage-key
+        - name: STORAGE_ACCOUNT_NAME
+          value: gab19openkore
+        - name: STORAGE_QUEUE_NAME
+          value: this_has_to_be_defined_at_docker_entrypoint
+        - name: MYSQL_HOST
+          value: "10.241.0.2"
+        - name: MYSQL_USER
+          value: "root"
+        - name: MYSQL_DB
+          value: "rathena"
+        - name: OK_IP
+          value: "10.241.0.3"
+        - name: OK_USERNAME
+          value: "botijo"
+        - name: OK_CHAR
+          value: "1"
+        - name: OK_USERNAMEMAXSUFFIX
+          value: "5000"
+        - name: OK_KILLSTEAL
+          value: "1"
+        - name: TERM
+          value: "xterm"

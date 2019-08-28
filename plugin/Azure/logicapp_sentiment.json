@@ -1,0 +1,113 @@
+{
+    "$connections": {
+        "value": {
+            "azuretables": {
+                "connectionId": "/subscriptions/[replace this with Azure Subscription ID]/resourceGroups/gab19/providers/Microsoft.Web/connections/azuretables",
+                "connectionName": "azuretables",
+                "id": "/subscriptions/[replace this with Azure Subscription ID]/providers/Microsoft.Web/locations/westeurope/managedApis/azuretables"
+            },
+            "cognitiveservicestextanalytics": {
+                "connectionId": "/subscriptions/[replace this with Azure Subscription ID]/resourceGroups/gab19/providers/Microsoft.Web/connections/cognitiveservicestextanalytics",
+                "connectionName": "cognitiveservicestextanalytics",
+                "id": "/subscriptions/[replace this with Azure Subscription ID]/providers/Microsoft.Web/locations/westeurope/managedApis/cognitiveservicestextanalytics"
+            }
+        }
+    },
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Detect_Sentiment": {
+                "inputs": {
+                    "body": {
+                        "text": "@triggerBody()['text']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['cognitiveservicestextanalytics']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/sentiment"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Insert_Entity": {
+                "inputs": {
+                    "body": {
+                        "PartitionKey": "@{triggerBody()['reporterName']}",
+                        "PlayerName": "@{triggerBody()['playerName']}",
+                        "RowKey": "@{body('Detect_Sentiment')?['id']}",
+                        "Sentiment": "@{body('Detect_Sentiment')?['score']}",
+                        "Text": "@{triggerBody()['text']}"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azuretables']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/Tables/@{encodeURIComponent('gab19sentiment')}/entities"
+                },
+                "runAfter": {
+                    "Detect_Sentiment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@{body('Detect_Sentiment')?['score']}\n",
+                    "headers": "@triggerOutputs()['headers']",
+                    "statusCode": 201
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "Insert_Entity": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "POST",
+                    "schema": {
+                        "$schema": "http://json-schema.org/draft-04/schema",
+                        "definitions": {},
+                        "properties": {
+                            "playerName": {
+                                "type": "string"
+                            },
+                            "reporterName": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "reporterName",
+                            "playerName",
+                            "text"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    }
+}

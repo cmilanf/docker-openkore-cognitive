@@ -1,0 +1,18 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "MYSQL_HOST": "111.111.111.111",
+    "MYSQL_PORT": 3306,
+    "SERVER_HOST": "222.222.222.222",
+    "SERVER_PORT": 6900,
+    "K8S_API_ENDPOINT": "https://myakscluster.hcp.westeurope.azmk8s.io:443",
+    "K8S_BEARER_TOKEN": "[YOUR TOKEN HERE]",
+    "K8S_DEPLOYMENT_NAME": "[YOUR DEPLOYMENT NAME HERE]"
+  },
+  "ConnectionStrings": {
+    "rAthenaDbConnStr": "Server=111.111.111.111;Port=3306;Database=rathena;Uid=root;Pwd=p4ss@w0rd",
+    "storageQueueConnStr": "DefaultEndpointsProtocol=https;AccountName=myazurestorageaccount;AccountKey=myKey;EndpointSuffix=core.windows.net"
+  }
+}

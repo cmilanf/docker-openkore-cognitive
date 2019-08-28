@@ -1,0 +1,354 @@
+attackUseWeapon 0
+attackNoGiveup 0
+attackCanSnipe 1
+attackCheckLOS 1
+
+######## Block options ########
+# You can copy & paste any block multiple times. So if you want to
+# configure two attack skills, just duplicate the attackSkillSlot block.
+
+useSelf_skill Heal {
+   lvl 10
+   hp < 50%
+   sp > 10%
+}
+
+useSelf_skill Increase AGI {
+   lvl 10
+   whenStatusInactive Increase AGI
+   sp > 10%
+   timeout 5
+}
+
+useSelf_skill Blessing {
+   lvl 10
+   whenStatusInactive Blessing
+   sp > 10%
+   timeout 5
+}
+
+useSelf_skill Ruwach {
+   lvl 1
+   whenStatusInactive Ruwach
+   sp > 10%
+   timeout 120
+}
+
+useSelf_skill Angelus {
+   lvl 10
+   whenStatusInactive Angelus
+   sp > 10%
+   timeout 120
+}
+
+useSelf_skill Cure {
+   lvl 1
+   whenStatusActive Cursed, Blinded, Chaos, Silenced
+   sp > 10%
+   timeout 5
+}
+
+attackSkillSlot Holy Light {
+   lvl 1
+   sp > 10%
+        monsters 
+}
+
+attackSkillSlot Decrease AGI {
+   lvl 10
+   sp > 10%
+   monsters 
+   maxAttempts 5
+   maxUses 1
+}
+
+attackSkillSlot Magnus Exorcismus {
+    lvl 10
+    dist 1.5
+    sp > 20%
+    inLockOnly 1
+    monsters
+    maxUses
+    disabled 0
+    inInventory Blue gemstone
+}
+
+attackSkillSlot Turn Undead {
+    lvl 10
+    dist 8
+    maxCastTime 0.5
+    minCastTime 0
+    hp
+    sp > 10%
+    inLockOnly 1
+    monsters Wraith, Evil Druid, Soldier Skeleton, Skel Archer, Skel Soldier,Anubis,Ancient Mummy,Ghoul
+    maxUses
+    disabled 0
+}
+
+useSelf_skill Kyrie Eleison {
+   lvl 10
+   sp > 45
+   stopWhenHit 1
+   notWhileSitting 1
+   notInTown 1
+   timeout 5
+   whenStatusInactive Kyrie Eleison
+}
+
+useSelf_skill Magnificat {
+   lvl 5
+   sp > 45
+   stopWhenHit 1
+   notWhileSitting 1
+   notInTown 1
+   timeout 5
+   whenStatusInactive Magnificat
+}
+
+useSelf_skill Gloria {
+   lvl 10
+   sp > 25
+   whenStatusInactive Gloria
+   timeout 28
+}
+
+useSelf_skill Pneuma {
+    target_defendMonsters Raydric Archer, Gargoyle,Bloody Knight,Orc Archers,Skel Archer
+    lvl 1
+    whenNotGround Pneuma
+    timeout 60
+}
+
+partySkill Pneuma {
+    lvl 1
+    sp > 20%
+    stopWhenHit 1
+    inLockOnly 1
+    notWhileSitting 1
+    notInTown 1
+    target_whenNotGround Pneuma
+    target_defendMonsters Raydric Archer,Bloody Knight,Orc Archers,Skel Archer
+}
+
+partySkill Kyrie Eleison {
+   lvl 10
+   sp > 45
+   stopWhenHit 1
+   notWhileSitting 1
+   notInTown 1
+   timeout 5
+   disabled 1
+   target_whenStatusInactive Kyrie Eleison
+   target_timeout 240
+}
+
+partySkill Magnificat {
+   lvl 3
+   sp
+   stopWhenHit 1
+   timeout 10
+   whenStatusInactive Magnificat
+   partyAggressives < 1
+   isSelfSkill 1
+}
+
+partySkill Resurrection {
+   lvl 4
+   target_dead 1
+}
+
+partySkill Impositio Manus {
+   lvl 10
+   sp > 25
+   notInTown 1
+   timeout 3
+   disabled 0
+   target_whenStatusInactive Impositio Manus
+   target_timeout 60
+}
+
+partySkill Status Recovery {
+   lvl 10
+   sp > 25
+   timeout 2
+   target_whenStatusActive Frozen, Stone Curse, Stun
+}
+
+partySkill Sanctuary {
+   lvl 10
+   sp > 80%
+   hp < 95%
+   notInTown 1
+   monstersCount >= 3
+   aggressives > 0
+   whenNotGround Sanctuary
+   timeout 60
+   maxCastTime 4
+   onAction Attack
+   maxUses 4
+   disabled 1
+   ininventory Blue Gem
+}
+
+partySkill Aspersio {
+   lvl 5
+   sp > 25
+   timeout 2
+   target_whenStatusInactive Aspersio
+        inInventory Holy Water
+}
+
+
+partySkill Suffragium {
+   lvl 3
+   sp > 25
+   timeout 8
+   target_whenStatusInactive Suffragium
+        notInTown 1
+}
+
+partySkill Assumptio {
+   lvl 10
+   sp > 20%
+   stopWhenHit 1
+   notWhileSitting 1
+   notInTown 1
+   timeout 5
+   disabled 1
+   target_whenStatusInactive Assumtio
+   target_timeout 98
+}
+
+useSelf_skill Assumptio {
+   lvl 10
+   sp > 20%
+   stopWhenHit 1
+   notWhileSitting 1
+   notInTown 1
+   timeout 5
+   disabled 1
+   whenStatusInactive Assumtio
+}
+
+partySkill Heal {
+   lvl 5
+   target_hp < 70%
+   sp > 10 %
+}
+
+partySkill Blessing {
+   lvl 10
+   sp > 64
+   notInTown 1
+   timeout 3
+   target_whenStatusInactive Blessing
+   target_timeout 240
+}
+
+partySkill Increase AGI {
+   lvl 10
+   sp > 45
+   notInTown 0
+   timeout 3
+   target_whenStatusInactive Increase AGI
+   target_timeout 240
+}
+
+partySkill Angelus {
+   lvl 10
+   sp > 45
+   notInTown 1
+   timeout 3
+   target_whenStatusInactive Angelus
+   target_timeout 240
+        isSelfSkill 1
+}
+
+partySkill Cure {
+   lvl 1
+   target_whenStatusActive Cursed, Blinded, Chaos, Silenced
+   sp > 10%
+   timeout 5
+}
+
+autoSwitch_default_rightHand
+autoSwitch_default_leftHand
+autoSwitch_default_arrow
+
+# NOTE: In the case of two handed weapons, or no Shield,
+#       duplicate the weapon name for 'rightHand'
+# To attack with bare hands, specify "[NONE]" (without the quotes) for rightHand
+
+autoSwitch {
+	rightHand
+	leftHand
+	arrow
+	distance
+	useWeapon
+}
+
+equipAuto {
+	topHead
+	midHead
+	lowHead
+	leftHand
+	rightHand
+	leftAccessory
+	rightAccessory
+	robe
+	armor
+	shoes
+	arrow
+	monsters
+	notMonsters
+	monstersCount
+	weight 0
+	whileSitting 0
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout 0
+	disabled 0
+	inInventory
+	manualAI 0
+}
+
+useSelf_item {
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	monsters
+	notMonsters
+	monstersCount
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout
+	disabled 0
+	inInventory
+	manualAI 0
+}

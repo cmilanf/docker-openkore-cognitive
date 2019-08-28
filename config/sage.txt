@@ -1,0 +1,225 @@
+attackUseWeapon 0
+attackNoGiveup 0
+attackCanSnipe 1
+attackCheckLOS 1
+
+######## Block options ########
+# You can copy & paste any block multiple times. So if you want to
+# configure two attack skills, just duplicate the attackSkillSlot block.
+
+attackSkillSlot Fire Bolt {
+   lvl 10
+   dist 8
+   #maxCastTime 0.1
+   #minCastTime 0
+   sp > 10
+   stopWhenHit 1
+   inLockOnly 1
+   notInTown 1
+   #monsters 
+   #maxUses 
+}
+
+attackSkillSlot Soul Strike {
+   lvl 10
+   dist 8
+   #maxCastTime 0.1
+   #minCastTime 0
+   sp > 10
+   stopWhenHit 1
+   inLockOnly 1
+   notInTown 1
+   #monsters 
+   #maxUses 
+}
+
+attackSkillSlot Cold Bolt {
+   lvl 10
+   dist 8
+   #maxCastTime 0.1
+   #minCastTime 0
+   sp > 10
+   stopWhenHit 1
+   inLockOnly 1
+   notInTown 1
+   #monsters 
+   #maxUses 
+}
+
+attackSkillSlot Lightning Bolt {
+   lvl 10
+   dist 8
+   #maxCastTime 0.1
+   #minCastTime 0
+   sp > 10
+   stopWhenHit 1
+   inLockOnly 1
+   notInTown 1
+   #monsters 
+   #maxUses 
+}
+
+useSelf_skill Energy Coat {
+   lvl 1
+   whenStatusInactive Energy Coat
+   stopWhenHit 1
+   inLockOnly 0
+   notWhileSitting 1
+   notInTown 1
+}
+
+#attackSkillSlot Frost Diver {
+#   lvl 10
+#   dist 6
+#   maxCastTime 0.1
+#   minCastTime 0.1
+#   sp > 10
+#   monsters 
+#   target_whenStatusInactive Frozen
+#}
+
+attackSkillSlot Sight {
+   lvl 1
+   target_whenStatusActive Hide,Cloaking
+   isSelfSkill 1
+   dist 1.5
+   timeout 30
+}
+
+attackSkillSlot Thunderstorm {
+   lvl 10
+   #maxCastTime 0.1
+   #minCastTime 0
+   dist 7
+   #aggressives > 2
+}
+
+partySkill Soul Change {
+   lvl 10
+   sp => 60%
+   onAction
+   whenStatusActive
+   whenStatusInactive
+   whenFollowing
+   aggressives
+   monsters
+   notMonsters
+   stopWhenHit 0
+   inLockOnly 0
+   notWhileSitting 0
+   notInTown 1
+   timeout 0
+   disabled 0
+   target
+   target_hp
+   target_isJob
+   target_isNotJob
+   target_whenStatusActive
+   target_whenStatusInactive
+   target_aggressives
+   target_monsters
+   target_timeout 0
+   target_dead 0
+}
+
+useSelf_skill Health Conversion {
+   lvl 5
+   maxCastTime 0
+   minCastTime 0
+   hp > 60%
+   sp < 30%
+   onAction
+   whenStatusActive
+   whenStatusInactive
+   whenFollowing
+   aggressives
+   monsters
+   notMonsters
+   stopWhenHit 0
+   inLockOnly 0
+   notWhileSitting 0
+   notInTown 0
+   timeout 0
+   disabled 0
+}
+
+autoSwitch_default_rightHand
+autoSwitch_default_leftHand
+autoSwitch_default_arrow
+
+# NOTE: In the case of two handed weapons, or no Shield,
+#       duplicate the weapon name for 'rightHand'
+# To attack with bare hands, specify "[NONE]" (without the quotes) for rightHand
+
+autoSwitch {
+	rightHand
+	leftHand
+	arrow
+	distance
+	useWeapon
+}
+
+equipAuto {
+	topHead
+	midHead
+	lowHead
+	leftHand
+	rightHand
+	leftAccessory
+	rightAccessory
+	robe
+	armor
+	shoes
+	arrow
+	monsters
+	notMonsters
+	monstersCount
+	weight 0
+	whileSitting 0
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout 0
+	disabled 0
+	inInventory
+	manualAI 0
+}
+
+useSelf_item {
+	hp
+	sp
+	homunculus_hp
+	homunculus_sp
+	homunculus_dead
+	onAction
+	whenStatusActive
+	whenStatusInactive
+	whenFollowing
+	spirit
+	amuletType
+	aggressives
+	monsters
+	notMonsters
+	monstersCount
+	stopWhenHit 0
+	inLockOnly 0
+	notWhileSitting 0
+	notInTown 0
+	timeout
+	disabled 0
+	inInventory
+	manualAI 0
+}

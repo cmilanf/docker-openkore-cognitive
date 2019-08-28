@@ -1,0 +1,4 @@
+azure/
+k8s/
+*.bat
+.dockerignore
